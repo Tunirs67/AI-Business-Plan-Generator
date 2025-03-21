@@ -1,175 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
+/* Algemene Stijlen */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Business Plan Generator</title>
-    <style>
-        /* Algemene stijl voor de pagina */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #121212;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-        }
+/* Header */
+header {
+    background-color: #ffffff;
+    color: #333;
+    padding: 20px 0;
+    border-bottom: 2px solid #444;
+}
 
-        header {
-            background-color: #000;
-            padding: 20px;
-            text-align: center;
-            color: #FFD700;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
 
-        h1 {
-            font-size: 3rem;
-            margin: 0;
-        }
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #1f1f1f;
-            border-radius: 8px;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-        }
+nav a {
+    text-decoration: none;
+    color: #0066cc;
+    font-size: 1.1rem;
+}
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+nav a:hover {
+    color: #004c99;
+}
 
-        label {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            display: block;
-            color: #FFD700;
-        }
+.hero-section {
+    text-align: center;
+    margin: 100px 0;
+    color: #333;
+}
 
-        input,
-        select,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            font-size: 1rem;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border: 1px solid #444;
-            background-color: #333;
-            color: #fff;
-        }
+.hero-section h2 {
+    font-size: 3rem;
+    margin: 0;
+}
 
-        button {
-            background-color: #FFD700;
-            color: #000;
-            padding: 15px 25px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            width: 100%;
-            transition: background-color 0.3s ease;
-        }
+.hero-section p {
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
 
-        button:hover {
-            background-color: #ffcc00;
-        }
+.cta-btn {
+    background-color: #0066cc;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 40px;
+}
 
-        .output {
-            background-color: #333;
-            color: #FFD700;
-            padding: 30px;
-            margin-top: 40px;
-            border-radius: 8px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-            display: none;
-        }
+.cta-btn:hover {
+    background-color: #004c99;
+}
 
-        footer {
-            background-color: #000;
-            text-align: center;
-            padding: 10px;
-            color: #FFD700;
-            font-size: 1rem;
-        }
-    </style>
-</head>
+/* Footer */
+footer {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+    color: #444;
+}
 
-<body>
-    <!-- Header Section -->
-    <header>
-        <h1>AI Business Plan Generator</h1>
-        <p>Maak snel je eigen op maat gemaakte businessplan met behulp van AI</p>
-    </header>
+/* Responsive design */
+@media (max-width: 768px) {
+    .hero-section h2 {
+        font-size: 2rem;
+    }
 
-    <!-- Main Content -->
-    <div class="container">
-        <h2>Vul de volgende gegevens in om je businessplan te genereren:</h2>
-        <div class="form-group">
-            <label for="business-niche">Wat is je bedrijfstak of niche?</label>
-            <input type="text" id="business-niche" placeholder="Bijv. E-commerce, Consulting, Software">
-        </div>
-
-        <div class="form-group">
-            <label for="region">Wat is je regio?</label>
-            <input type="text" id="region" placeholder="Bijv. Europa, VS, Azië">
-        </div>
-
-        <div class="form-group">
-            <label for="business-size">Hoe groot wil je bedrijf zijn?</label>
-            <select id="business-size">
-                <option value="small">Klein (1-10 medewerkers)</option>
-                <option value="medium">Middelgroot (10-50 medewerkers)</option>
-                <option value="large">Groot (50+ medewerkers)</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="goal">Wat is je belangrijkste doel?</label>
-            <textarea id="goal" placeholder="Beschrijf je doel in één zin"></textarea>
-        </div>
-
-        <button onclick="generateBusinessPlan()">Genereer je Businessplan</button>
-
-        <!-- Output Section -->
-        <div class="output" id="business-plan-output">
-            <h3>Je AI Businessplan:</h3>
-            <p id="output-plan"></p>
-        </div>
-    </div>
-
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2025 AI Business Plan Generator. Alle rechten voorbehouden.</p>
-    </footer>
-
-    <!-- JavaScript Section -->
-    <script>
-        function generateBusinessPlan() {
-            // Verkrijg de gegevens van de gebruiker
-            const niche = document.getElementById('business-niche').value;
-            const region = document.getElementById('region').value;
-            const businessSize = document.getElementById('business-size').value;
-            const goal = document.getElementById('goal').value;
-
-            // Als de velden leeg zijn, vraag dan om meer informatie
-            if (!niche || !region || !goal) {
-                alert("Vul alstublieft alle velden in!");
-                return;
-            }
-
-            // Genereer het businessplan op basis van de gegevens
-            let businessPlan = `Business Plan voor een ${niche} bedrijf in ${region}:<br><br>`;
-            businessPlan += `Doel: ${goal}<br><br>`;
-            businessPlan += `Bedrijfsgrootte: ${businessSize === "small" ? "Klein (1-10 medewerkers)" : businessSize === "medium" ? "Middelgroot (10-50 medewerkers)" : "Groot (50+ medewerkers)"}`;
-
-            // Toon het gegenereerde plan
-            document.getElementById('output-plan').innerHTML = businessPlan;
-            document.getElementById('business-plan-output').style.display = 'block';
-        }
-    </script>
-</body>
-
-</html>
+    .cta-btn {
+        padding: 12px 25px;
+    }
+}
