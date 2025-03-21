@@ -1,158 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Business Plan Generator</title>
     <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* Algemene stijl voor de pagina */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #000;
+            background-color: #121212;
             color: #fff;
+            margin: 0;
+            padding: 0;
         }
 
-        /* Header Section */
         header {
-            background: #111;
-            padding: 50px 0;
+            background-color: #000;
+            padding: 20px;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
-        header h1 {
             color: #FFD700;
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-        header p {
-            color: #aaa;
-            font-size: 1.2rem;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        /* Main Form */
-        .main-container {
-            padding: 50px 20px;
-            text-align: center;
+        h1 {
+            font-size: 3rem;
+            margin: 0;
         }
-        .form-container {
-            background: #222;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            margin-top: 30px;
-            max-width: 800px;
-            margin: auto;
-        }
-        input, select, textarea {
-            background: #333;
-            border: 1px solid #444;
-            color: #fff;
-            padding: 15px;
-            width: 100%;
-            margin-bottom: 15px;
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #1f1f1f;
             border-radius: 8px;
-            font-size: 1rem;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
         }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: block;
+            color: #FFD700;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: #fff;
+        }
+
         button {
             background-color: #FFD700;
             color: #000;
-            font-size: 1.2rem;
-            padding: 15px 30px;
+            padding: 15px 25px;
             border: none;
-            border-radius: 8px;
+            border-radius: 5px;
+            font-size: 1.2rem;
             cursor: pointer;
-            transition: background 0.3s;
+            width: 100%;
+            transition: background-color 0.3s ease;
         }
+
         button:hover {
-            background-color: #FFB800;
+            background-color: #ffcc00;
         }
 
-        /* Footer */
-        footer {
-            background: #111;
-            color: #aaa;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        /* Results Section */
-        .result-container {
-            display: none;
-            padding: 40px 20px;
-            background: #333;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            margin-top: 30px;
-            max-width: 800px;
-            margin: auto;
-            text-align: left;
-        }
-        .result-container h2 {
+        .output {
+            background-color: #333;
             color: #FFD700;
-            margin-bottom: 20px;
+            padding: 30px;
+            margin-top: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            display: none;
         }
-        .result-container p {
-            color: #fff;
+
+        footer {
+            background-color: #000;
+            text-align: center;
+            padding: 10px;
+            color: #FFD700;
             font-size: 1rem;
-            margin-bottom: 10px;
         }
     </style>
 </head>
+
 <body>
+    <!-- Header Section -->
+    <header>
+        <h1>AI Business Plan Generator</h1>
+        <p>Maak snel je eigen op maat gemaakte businessplan met behulp van AI</p>
+    </header>
 
-<header>
-    <h1>AI Business Plan Generator</h1>
-    <p>Vul de gegevens in en laat de AI jouw perfecte businessplan creëren!</p>
-</header>
+    <!-- Main Content -->
+    <div class="container">
+        <h2>Vul de volgende gegevens in om je businessplan te genereren:</h2>
+        <div class="form-group">
+            <label for="business-niche">Wat is je bedrijfstak of niche?</label>
+            <input type="text" id="business-niche" placeholder="Bijv. E-commerce, Consulting, Software">
+        </div>
 
-<div class="main-container">
-    <div class="form-container">
-        <h2>Geef je informatie hieronder:</h2>
-        <input type="text" id="niche" placeholder="Wat voor niche wil je?" />
-        <input type="text" id="region" placeholder="Wat is je regio?" />
-        <input type="text" id="growth" placeholder="Hoe groot wil je het maken?" />
-        <input type="number" id="goal" placeholder="Wat is je financieel doel?" />
-        <textarea id="strategy" placeholder="Wat is je strategie?"></textarea>
-        <button onclick="generateBusinessPlan()">Genereer Businessplan</button>
+        <div class="form-group">
+            <label for="region">Wat is je regio?</label>
+            <input type="text" id="region" placeholder="Bijv. Europa, VS, Azië">
+        </div>
+
+        <div class="form-group">
+            <label for="business-size">Hoe groot wil je bedrijf zijn?</label>
+            <select id="business-size">
+                <option value="small">Klein (1-10 medewerkers)</option>
+                <option value="medium">Middelgroot (10-50 medewerkers)</option>
+                <option value="large">Groot (50+ medewerkers)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="goal">Wat is je belangrijkste doel?</label>
+            <textarea id="goal" placeholder="Beschrijf je doel in één zin"></textarea>
+        </div>
+
+        <button onclick="generateBusinessPlan()">Genereer je Businessplan</button>
+
+        <!-- Output Section -->
+        <div class="output" id="business-plan-output">
+            <h3>Je AI Businessplan:</h3>
+            <p id="output-plan"></p>
+        </div>
     </div>
 
-    <div class="result-container" id="result">
-        <h2>Jouw Businessplan:</h2>
-        <p><strong>Niche:</strong> <span id="outputNiche"></span></p>
-        <p><strong>Regio:</strong> <span id="outputRegion"></span></p>
-        <p><strong>Groei:</strong> <span id="outputGrowth"></span></p>
-        <p><strong>Financieel Doel:</strong> <span id="outputGoal"></span></p>
-        <p><strong>Strategie:</strong> <span id="outputStrategy"></span></p>
-    </div>
-</div>
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 AI Business Plan Generator. Alle rechten voorbehouden.</p>
+    </footer>
 
-<footer>
-    <p>&copy; 2025 AI Business Plan Generator | All rights reserved</p>
-</footer>
+    <!-- JavaScript Section -->
+    <script>
+        function generateBusinessPlan() {
+            // Verkrijg de gegevens van de gebruiker
+            const niche = document.getElementById('business-niche').value;
+            const region = document.getElementById('region').value;
+            const businessSize = document.getElementById('business-size').value;
+            const goal = document.getElementById('goal').value;
 
-<script>
-    function generateBusinessPlan() {
-        var niche = document.getElementById('niche').value;
-        var region = document.getElementById('region').value;
-        var growth = document.getElementById('growth').value;
-        var goal = document.getElementById('goal').value;
-        var strategy = document.getElementById('strategy').value;
+            // Als de velden leeg zijn, vraag dan om meer informatie
+            if (!niche || !region || !goal) {
+                alert("Vul alstublieft alle velden in!");
+                return;
+            }
 
-        document.getElementById('outputNiche').textContent = niche;
-        document.getElementById('outputRegion').textContent = region;
-        document.getElementById('outputGrowth').textContent = growth;
-        document.getElementById('outputGoal').textContent = goal;
-        document.getElementById('outputStrategy').textContent = strategy;
+            // Genereer het businessplan op basis van de gegevens
+            let businessPlan = `Business Plan voor een ${niche} bedrijf in ${region}:<br><br>`;
+            businessPlan += `Doel: ${goal}<br><br>`;
+            businessPlan += `Bedrijfsgrootte: ${businessSize === "small" ? "Klein (1-10 medewerkers)" : businessSize === "medium" ? "Middelgroot (10-50 medewerkers)" : "Groot (50+ medewerkers)"}`;
 
-        document.querySelector('.form-container').style.display = 'none';
-        document.getElementById('result').style.display = 'block';
-    }
-</script>
-
+            // Toon het gegenereerde plan
+            document.getElementById('output-plan').innerHTML = businessPlan;
+            document.getElementById('business-plan-output').style.display = 'block';
+        }
+    </script>
 </body>
+
 </html>
