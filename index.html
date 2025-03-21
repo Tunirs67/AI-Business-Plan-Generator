@@ -7,62 +7,110 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
             margin: 0;
             padding: 0;
             text-align: center;
-            background-color: #f4f4f4;
         }
         .container {
             max-width: 800px;
             margin: 50px auto;
             padding: 20px;
-            background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: #1a1a1a;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
             border-radius: 10px;
+            color: #fff;
         }
         h1 {
+            color: #FFD700; /* Gouden kleur */
+        }
+        label {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
             color: #333;
         }
         button {
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            background-color: #007bff;
-            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #FFD700; /* Gouden kleur */
+            color: #000;
             cursor: pointer;
             border-radius: 5px;
+            border: none;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #ffcc00; /* Donker goud */
         }
         #output {
             margin-top: 20px;
-            padding: 10px;
-            background-color: #f0f0f0;
+            background-color: #333;
+            color: #FFD700;
+            padding: 20px;
             border-radius: 5px;
-            text-align: left;
             display: none;
+            text-align: left;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>AI Business Plan Generator</h1>
-        <p>Creëer binnen enkele minuten een professioneel businessplan met AI.</p>
-        <button onclick="generatePlan()">Genereer jouw plan</button>
+        <p>Beantwoord de vragen en genereer je persoonlijke businessplan!</p>
+
+        <!-- Formulier om de input van de gebruiker te verzamelen -->
+        <label for="niche">Wat voor niche wil je?</label>
+        <input type="text" id="niche" placeholder="Bijv. E-commerce, Gezondheid, Technologie" required>
+
+        <label for="region">Wat is je regio?</label>
+        <input type="text" id="region" placeholder="Bijv. Nederland, Europa" required>
+
+        <label for="growth">Hoe groot wil je het maken?</label>
+        <input type="text" id="growth" placeholder="Bijv. Lokaal, Nationaal" required>
+
+        <label for="goal">Wat is je financieel doel?</label>
+        <input type="number" id="goal" placeholder="Bijv. €100.000" required>
+
+        <label for="strategy">Wat is je strategie?</label>
+        <textarea id="strategy" placeholder="Je bedrijfsstrategie" required></textarea>
+
+        <button onclick="generatePlan()">Genereer Businessplan</button>
+
         <div id="output">
             <h2>Jouw Businessplan:</h2>
-            <p><strong>Bedrijfsnaam:</strong> AI Innovations</p>
-            <p><strong>Missie:</strong> Het verbeteren van zakelijke processen door middel van kunstmatige intelligentie en automatisering.</p>
-            <p><strong>Marktsegment:</strong> Kleine en middelgrote ondernemingen die hun bedrijfsvoering willen optimaliseren.</p>
-            <p><strong>Financieel Doel:</strong> In de komende 2 jaar een omzet van €500.000 realiseren.</p>
-            <p><strong>Strategie:</strong> Wij bieden AI-oplossingen op maat die bedrijven helpen om sneller, efficiënter en winstgevender te opereren.</p>
+            <p><strong>Niche:</strong> <span id="outputNiche"></span></p>
+            <p><strong>Regio:</strong> <span id="outputRegion"></span></p>
+            <p><strong>Groei:</strong> <span id="outputGrowth"></span></p>
+            <p><strong>Financieel Doel:</strong> <span id="outputGoal"></span></p>
+            <p><strong>Strategie:</strong> <span id="outputStrategy"></span></p>
         </div>
     </div>
 
     <script>
         function generatePlan() {
-            // Verberg de knop en toon de gegenereerde inhoud
+            // Haal de gegevens op van de inputvelden
+            var niche = document.getElementById('niche').value;
+            var region = document.getElementById('region').value;
+            var growth = document.getElementById('growth').value;
+            var goal = document.getElementById('goal').value;
+            var strategy = document.getElementById('strategy').value;
+
+            // Vul de output met de gegevens die de gebruiker invoerde
+            document.getElementById('outputNiche').innerText = niche;
+            document.getElementById('outputRegion').innerText = region;
+            document.getElementById('outputGrowth').innerText = growth;
+            document.getElementById('outputGoal').innerText = goal;
+            document.getElementById('outputStrategy').innerText = strategy;
+
+            // Verberg het formulier en toon de output
+            document.querySelector("input, textarea").style.display = "none";
             document.querySelector("button").style.display = "none";
             document.getElementById('output').style.display = "block";
         }
