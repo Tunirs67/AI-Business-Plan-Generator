@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Business Plan Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Algemene instellingen */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            color: #000;
+            text-align: center;
+            padding: 80px 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 48px;
+            font-weight: 600;
+            margin: 0;
+            color: #1E90FF; /* Royal blue */
+        }
+
+        header p {
+            font-size: 24px;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        .cta-buttons {
+            margin-top: 30px;
+        }
+
+        .cta-buttons a {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #1E90FF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .cta-buttons a:hover {
+            background-color: #0056b3;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: #f7f7f7;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .about-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .about-section p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Formulier voor de businessplan generator */
+        .form-container {
+            background-color: #f8f8f8;
+            padding: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .form-container h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .form-container input, .form-container select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .form-container button {
+            background-color: #1E90FF;
+            color: white;
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Welkom op de AI Business Plan Generator</h1>
+        <p>Samen bouwen we een sterk plan voor jouw bedrijf.</p>
+        <div class="cta-buttons">
+            <a href="#about">Onze Motto</a>
+            <a href="#start-project">Start Je Project</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <h2>Onze Motto</h2>
+        <p>Wij geloven in het creëren van succesvolle bedrijven door slimme en strategische plannen. Door gebruik te maken van geavanceerde AI-technologie kunnen we jou helpen je droombedrijf te starten en te laten groeien.</p>
+    </section>
+
+    <!-- Business Plan Generator -->
+    <section id="start-project" class="form-container">
+        <h2>Start je Project</h2>
+        <form id="business-form">
+            <label for="niche">Wat is je niche?</label>
+            <input type="text" id="niche" placeholder="Bijv. E-commerce, FinTech, Gezondheid">
+
+            <label for="region">Wat is je regio?</label>
+            <input type="text" id="region" placeholder="Bijv. Nederland, België, Europa">
+
+            <label for="size">Wat is de gewenste grootte van je bedrijf?</label>
+            <select id="size">
+                <option value="small">Klein</option>
+                <option value="medium">Middelgroot</option>
+                <option value="large">Groot</option>
+            </select>
+
+            <button type="button" onclick="generatePlan()">Genereer Business Plan</button>
+        </form>
+
+        <!-- Output voor het businessplan -->
+        <div id="plan-output" style="margin-top: 40px;">
+            <!-- Hier wordt het businessplan weergegeven -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 AI Business Plan Generator. Alle rechten voorbehouden.</p>
+    </footer>
+
+    <script>
+        function generatePlan() {
+            const niche = document.getElementById('niche').value;
+            const region = document.getElementById('region').value;
+            const size = document.getElementById('size').value;
+
+            // Dit is waar je de businessplan-generatie logica plaatst
+            let plan = `Jouw businessplan voor de niche ${niche} in ${region} met een bedrijfsgrootte van ${size}:\n\n`;
+
+            // Voeg hier gedetailleerde businessplan-generatie toe op basis van de invoer
+            plan += `
+            - Marktanalyse: Onderzoek de markt voor ${niche} in de regio ${region}.
+            - Doelgroep: Bepaal de doelgroep voor jouw ${niche} in ${region}.
+            - Strategie: Focus op een klantgerichte benadering met een ${size}-model.
+            `;
+
+            // Output het businessplan
+            document.getElementById('plan-output').innerText = plan;
+       
