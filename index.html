@@ -35,6 +35,14 @@
         button:hover {
             background-color: #0056b3;
         }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            text-align: left;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -42,11 +50,21 @@
         <h1>AI Business Plan Generator</h1>
         <p>Creëer binnen enkele minuten een professioneel businessplan met AI.</p>
         <button onclick="generatePlan()">Genereer jouw plan</button>
-        <p id="output"></p>
+        <div id="output">
+            <h2>Jouw Businessplan:</h2>
+            <p><strong>Bedrijfsnaam:</strong> AI Innovations</p>
+            <p><strong>Missie:</strong> Het verbeteren van zakelijke processen door middel van kunstmatige intelligentie en automatisering.</p>
+            <p><strong>Marktsegment:</strong> Kleine en middelgrote ondernemingen die hun bedrijfsvoering willen optimaliseren.</p>
+            <p><strong>Financieel Doel:</strong> In de komende 2 jaar een omzet van €500.000 realiseren.</p>
+            <p><strong>Strategie:</strong> Wij bieden AI-oplossingen op maat die bedrijven helpen om sneller, efficiënter en winstgevender te opereren.</p>
+        </div>
     </div>
+
     <script>
         function generatePlan() {
-            document.getElementById('output').innerText = "Jouw AI-gegeneerde businessplan verschijnt hier binnenkort!";
+            // Verberg de knop en toon de gegenereerde inhoud
+            document.querySelector("button").style.display = "none";
+            document.getElementById('output').style.display = "block";
         }
     </script>
 </body>
