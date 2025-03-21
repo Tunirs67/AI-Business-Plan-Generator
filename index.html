@@ -5,115 +5,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Business Plan Generator</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
+        /* General Reset */
+        * {
             margin: 0;
             padding: 0;
-            text-align: center;
+            box-sizing: border-box;
         }
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background: #1a1a1a;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            border-radius: 10px;
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
             color: #fff;
         }
-        h1 {
-            color: #FFD700; /* Gouden kleur */
+
+        /* Header Section */
+        header {
+            background: #111;
+            padding: 50px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
-        label {
-            font-size: 18px;
-            margin: 10px 0;
+        header h1 {
+            color: #FFD700;
+            font-size: 3rem;
+            margin-bottom: 10px;
         }
-        input, textarea {
+        header p {
+            color: #aaa;
+            font-size: 1.2rem;
+        }
+
+        /* Main Form */
+        .main-container {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .form-container {
+            background: #222;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            margin-top: 30px;
+            max-width: 800px;
+            margin: auto;
+        }
+        input, select, textarea {
+            background: #333;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 15px;
             width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            color: #333;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            font-size: 1rem;
         }
         button {
-            padding: 15px 30px;
-            font-size: 18px;
-            background-color: #FFD700; /* Gouden kleur */
+            background-color: #FFD700;
             color: #000;
-            cursor: pointer;
-            border-radius: 5px;
+            font-size: 1.2rem;
+            padding: 15px 30px;
             border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
         }
         button:hover {
-            background-color: #ffcc00; /* Donker goud */
+            background-color: #FFB800;
         }
-        #output {
-            margin-top: 20px;
-            background-color: #333;
-            color: #FFD700;
-            padding: 20px;
-            border-radius: 5px;
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: #aaa;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        /* Results Section */
+        .result-container {
             display: none;
+            padding: 40px 20px;
+            background: #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            margin-top: 30px;
+            max-width: 800px;
+            margin: auto;
             text-align: left;
+        }
+        .result-container h2 {
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+        .result-container p {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>AI Business Plan Generator</h1>
-        <p>Beantwoord de vragen en genereer je persoonlijke businessplan!</p>
 
-        <!-- Formulier om de input van de gebruiker te verzamelen -->
-        <label for="niche">Wat voor niche wil je?</label>
-        <input type="text" id="niche" placeholder="Bijv. E-commerce, Gezondheid, Technologie" required>
+<header>
+    <h1>AI Business Plan Generator</h1>
+    <p>Vul de gegevens in en laat de AI jouw perfecte businessplan creëren!</p>
+</header>
 
-        <label for="region">Wat is je regio?</label>
-        <input type="text" id="region" placeholder="Bijv. Nederland, Europa" required>
-
-        <label for="growth">Hoe groot wil je het maken?</label>
-        <input type="text" id="growth" placeholder="Bijv. Lokaal, Nationaal" required>
-
-        <label for="goal">Wat is je financieel doel?</label>
-        <input type="number" id="goal" placeholder="Bijv. €100.000" required>
-
-        <label for="strategy">Wat is je strategie?</label>
-        <textarea id="strategy" placeholder="Je bedrijfsstrategie" required></textarea>
-
-        <button onclick="generatePlan()">Genereer Businessplan</button>
-
-        <div id="output">
-            <h2>Jouw Businessplan:</h2>
-            <p><strong>Niche:</strong> <span id="outputNiche"></span></p>
-            <p><strong>Regio:</strong> <span id="outputRegion"></span></p>
-            <p><strong>Groei:</strong> <span id="outputGrowth"></span></p>
-            <p><strong>Financieel Doel:</strong> <span id="outputGoal"></span></p>
-            <p><strong>Strategie:</strong> <span id="outputStrategy"></span></p>
-        </div>
+<div class="main-container">
+    <div class="form-container">
+        <h2>Geef je informatie hieronder:</h2>
+        <input type="text" id="niche" placeholder="Wat voor niche wil je?" />
+        <input type="text" id="region" placeholder="Wat is je regio?" />
+        <input type="text" id="growth" placeholder="Hoe groot wil je het maken?" />
+        <input type="number" id="goal" placeholder="Wat is je financieel doel?" />
+        <textarea id="strategy" placeholder="Wat is je strategie?"></textarea>
+        <button onclick="generateBusinessPlan()">Genereer Businessplan</button>
     </div>
 
-    <script>
-        function generatePlan() {
-            // Haal de gegevens op van de inputvelden
-            var niche = document.getElementById('niche').value;
-            var region = document.getElementById('region').value;
-            var growth = document.getElementById('growth').value;
-            var goal = document.getElementById('goal').value;
-            var strategy = document.getElementById('strategy').value;
+    <div class="result-container" id="result">
+        <h2>Jouw Businessplan:</h2>
+        <p><strong>Niche:</strong> <span id="outputNiche"></span></p>
+        <p><strong>Regio:</strong> <span id="outputRegion"></span></p>
+        <p><strong>Groei:</strong> <span id="outputGrowth"></span></p>
+        <p><strong>Financieel Doel:</strong> <span id="outputGoal"></span></p>
+        <p><strong>Strategie:</strong> <span id="outputStrategy"></span></p>
+    </div>
+</div>
 
-            // Vul de output met de gegevens die de gebruiker invoerde
-            document.getElementById('outputNiche').innerText = niche;
-            document.getElementById('outputRegion').innerText = region;
-            document.getElementById('outputGrowth').innerText = growth;
-            document.getElementById('outputGoal').innerText = goal;
-            document.getElementById('outputStrategy').innerText = strategy;
+<footer>
+    <p>&copy; 2025 AI Business Plan Generator | All rights reserved</p>
+</footer>
 
-            // Verberg het formulier en toon de output
-            document.querySelector("input, textarea").style.display = "none";
-            document.querySelector("button").style.display = "none";
-            document.getElementById('output').style.display = "block";
-        }
-    </script>
+<script>
+    function generateBusinessPlan() {
+        var niche = document.getElementById('niche').value;
+        var region = document.getElementById('region').value;
+        var growth = document.getElementById('growth').value;
+        var goal = document.getElementById('goal').value;
+        var strategy = document.getElementById('strategy').value;
+
+        document.getElementById('outputNiche').textContent = niche;
+        document.getElementById('outputRegion').textContent = region;
+        document.getElementById('outputGrowth').textContent = growth;
+        document.getElementById('outputGoal').textContent = goal;
+        document.getElementById('outputStrategy').textContent = strategy;
+
+        document.querySelector('.form-container').style.display = 'none';
+        document.getElementById('result').style.display = 'block';
+    }
+</script>
+
 </body>
 </html>
